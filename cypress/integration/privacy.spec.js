@@ -1,5 +1,5 @@
 Cypress._.times(3, () => {
-  it("testa a página da política de privacidade de forma independente", () => {
+  it("independently test the privacy policy page", () => {
     cy.visit("./src/privacy.html");
   });
 });
