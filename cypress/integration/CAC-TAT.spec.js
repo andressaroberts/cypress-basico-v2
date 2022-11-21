@@ -175,4 +175,29 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get("#privacy a").invoke("removeAttr", "target").click();
     cy.contains("Talking About Testing").should("be.visible");
   });
+
+  it("exibe e esconde as mensagens de sucesso e erro usando o .invoke", () => {
+    cy.get(".success")
+      .should("not.be.visible")
+      .invoke("show")
+      .should("be.visible")
+      .and("contain", "Mensagem enviada com sucesso.")
+      .invoke("hide")
+      .should("not.be.visible");
+    cy.get(".error")
+      .should("not.be.visible")
+      .invoke("show")
+      .should("be.visible")
+      .and("contain", "Valide os campos obrigatórios!")
+      .invoke("hide")
+      .should("not.be.visible");
+  });
+
+  it("preenche a area de texto usando o comando invoke", () => {
+    const longText = Cypress._.repeat("Testing text-area ", 10);
+
+    cy.get("#open-text-area")
+      .invoke("val", longText)
+      .should("have.value", longText);
+  });
 });
