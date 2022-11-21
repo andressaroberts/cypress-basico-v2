@@ -28,10 +28,11 @@ describe("Central de Atendimento ao Cliente TAT", () => {
     cy.get(".success").should("not.be.visible");
   });
 
-  it("campo telefone continua vazio ao digitar um valor não-numérico", () => {
-    cy.get("#phone").type("testing").should("have.value", "");
+  Cypress._.times(2, () => {
+    it("campo telefone continua vazio ao digitar um valor não-numérico", () => {
+      cy.get("#phone").type("testing").should("have.value", "");
+    });
   });
-
   it("exibe mensagem de erro ao submeter o formulário com um email com formatação inválida", () => {
     cy.clock();
 
